@@ -1,5 +1,12 @@
 ## requirements
 
+## Model
+
+The model can be downloaded from;
+
+
+You then need to edit the ml_main.py file to direct it to the location of the model
+
 ### Python Virtual Environment setup
 
 Once you have downloaded the repo, you will need to cd into the movieeze/ directory and create a virtual environment there with the following.
