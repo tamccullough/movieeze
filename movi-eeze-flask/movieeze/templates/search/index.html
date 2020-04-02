@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form style="height: 750px; background-image: url({{ url_for('static', filename='img/bw-1.jpg') }});
+background-position: center;background-repeat: no-repeat;
+background-size: cover;" class="gr8-center gr8win1 lato" name="Input" method="POST" action="/movies">
+		<br/>
+		<table align="center" cellpadding="5" class="lato">
+			<tr>
+				<td><strong>enter a comma separated list of the following choices;</strong></td></tr>
+			<tr>
+				<tr><td>action,adventure,animation,children,comedy,crime</td></tr>
+				<tr><td>documentary,drama,fantasy,film-noir,horror,musical</td></tr>
+				<tr><td>mystery,romance,sci-fi,thriller,war,western</td></tr>
+				<td><input type="text" id="genres" name="genres" value="" size="50" /></td>
+			</tr>
+		</table>
+				<button type="submit" class="gr8-form gr8-btn-in">search</button>
+</form>
+
+{% endblock %}
