@@ -4,4 +4,4 @@
 
 The user is presented with index upon loading the website.
 
-![Imgur](https://imgur.com/TfkofY4)
+![Index](https://imgur.com/TfkofY4.png)
