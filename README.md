@@ -28,7 +28,7 @@ The user tells the recommender program the genres they would ideally like to wat
 
 ### Reality
 
-With all the streaming options available today, it can be very difficult to narrow downa list of movies that suits everyone. They often settle on the path of least resistance, choosing often to watch a movie that does not satisty everyone.
+With all the streaming options available today, it can be very difficult to narrow downa list of movies that suits everyone. They often settle on the path of least resistance, choosing often to watch a movie that does not satisfy everyone.
 
 ### Limitations
 
