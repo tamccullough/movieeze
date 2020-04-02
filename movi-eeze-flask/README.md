@@ -8,10 +8,16 @@ The user is presented with the index upon loading the website. Here they enter t
 
 Genres entered by the user
 
-![Index](https://imgur.com/TfkofY4.png)
+![Genres](https://imgur.com/myhpLZR.png)
 
 ### Movie List
 
 Once the user has entered a list of genres, the model makes predictions and a list of movies is generated.
 
-![Movies](https://imgur.com/TfkofY4.png)
+Horror,Comedy
+
+![Movies1](https://imgur.com/JHDewts.png)
+
+Action,Romance
+
+![Movies2](https://imgur.com/sVX0y94.png)
