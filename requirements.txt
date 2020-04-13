@@ -1,0 +1,16 @@
+Click  
+Flask 
+itsdangerous
+Jinja2
+joblib
+MarkupSafe  
+numpy
+pandas
+pip
+python-dateutil 
+pytz
+scikit-surprise 
+scipy
+setuptools
+six
+Werkzeug 
