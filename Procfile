@@ -1,3 +1,3 @@
 #bash movi-eeze-flask/run-flask.sh
 #web: bash movi-eeze-flask/run-flask.sh
-web: gunicorn wsgi:movi-eeze-flask/movieeze
+web: gunicorn -w 4 -b 0.0.0.0:$PORT -k gevent app:movi-eeze-flask/movieeze
