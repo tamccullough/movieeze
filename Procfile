@@ -1,1 +1,1 @@
-web: gunicorn app:movi-eeze-flask/movieeze
+web: gunicorn main:movieeze
