@@ -1,1 +1,1 @@
-web: python movi-eeze-flask/movieeze/__init__.py
+web: gunicorn app:movi-eeze-flask/movieeze
