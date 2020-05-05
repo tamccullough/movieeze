@@ -5,7 +5,7 @@ import heapq
 import pickle
 import os
 
-filename = 'movieeze/movielens_light_recommender_model.sav'
+filename = 'model/movielens_light_recommender_model.sav'
 ml_model = pickle.load(open(filename, 'rb'))
 
 genres = ['Action','Adventure','Animation',
@@ -15,9 +15,9 @@ genres = ['Action','Adventure','Animation',
           'Mystery','Romance','Sci-Fi',
           'Thriller','War','Western']
 
-movies = pd.read_csv('movieeze/datasets/movies.csv')
-ratings = pd.read_csv('movieeze/datasets/ratings.csv')
-users = pd.read_csv('movieeze/datasets/users.csv')
+movies = pd.read_csv('datasets/movies.csv')
+ratings = pd.read_csv('datasets/ratings.csv')
+users = pd.read_csv('datasets/users.csv')
 
 def get_r(user_id):
     # Select which system to use. Due to memory constraints, item based is the only viable option

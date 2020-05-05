@@ -17,13 +17,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/gr8css.css') }}">
 <table class="gr8-header" style="width:100%">
   <tr>
-  <td align="left" width="120px"><a class="lato" href="{{ url_for('auth.register') }}">Register</a></td>
  	<td class="gr8-header"><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/movi-eeze-logo.png') }}" alt="MoviEeze Logo" height="50px"/></a></td>
-  {% if g.user %}
-  <td align="right" width="120px"><a class="lato" href="{{ url_for('auth.logout') }}">{{ g.user['username'] }} log out</a></td>
-  {% else %}
-  <td align="right" width="120px"><a class="lato" href="{{ url_for('auth.login') }}">log in</a></td>
-  {% endif %}
   </tr>
 </table>
 </head>

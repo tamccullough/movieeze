@@ -10,10 +10,7 @@ import pandas as pd
 
 movieeze = Flask(__name__)
 
-
-movieeze.config.from_mapping(SECRET_KEY='dev', DATABASE=os.path.join(app.instance_path, 'movieeze.sqlite'))
-
-@movieeze.route('/')
+@movieeze.route('/index')
 def index():
     #get the ingredients and search
     return render_template('/index.html')#, posts=posts)
@@ -22,7 +19,7 @@ def index():
 #@login_required
 def movies():
     #posting the results
-    user_id = g.user['username']
+    user_id = 4168
     genres_list = request.form['genres']
     movies_list = ml_main.set_up_ml(user_id,genres_list)
     #movies_list = ml_main.set_test()
