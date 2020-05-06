@@ -18,7 +18,7 @@ genres = ['Action','Adventure','Animation',
 movies = pd.read_csv('datasets/movies_2010.csv')
 ratings = pd.read_csv('datasets/ratings_2010.csv')
 links = pd.read_csv('datasets/links_2010.csv')
-
+genre_image_list = pd.read_csv('datasets/genre_image_list.csv')
 def get_r(user_id):
     # Select which system to use. Due to memory constraints, item based is the only viable option
     recommender_system = ml_model
@@ -65,7 +65,12 @@ def reg_frame(f_list,items):
     s_ = ''
     for i in items:
         j = i.strip()
-        j = cap_str(j)
+        if j == 'sci-fi':
+            j = 'Sci-Fi'
+        if j == 'film-noir':
+            j = 'Film-Noir'
+        else:
+            j = cap_str(j)
         str_ = f'(?=.*{j})'
         s_ += str_
     s_
@@ -82,7 +87,6 @@ def set_up_ml(user_id,genre_list):
 def get_final_recommendation(list_1,list_2,list_3): # combine all recommendations
     film_recommendation = pd.DataFrame()
     film_recommendation = pd.concat([list_1,list_2,list_3]) # concat lists
-    film_recommendation = film_recommendation.drop_duplicates() # drop recommended duplicates of films
     film_recommendation = film_recommendation.sort_values('pred_rating',ascending=False) # sort by predicted rating
     film_recommendation.pop('pred_rating') # drop the rating column
     film_recommendation = film_recommendation.reset_index()
@@ -95,9 +99,13 @@ def get_final_recommendation(list_1,list_2,list_3): # combine all recommendation
         a.append(link)
         genres = film_recommendation.iloc[i]['genres']
         genres = genres.split('|')
-        genre1 = genres[0]
-        genre2 = genres[1]
-        genre = genre1.lower() + genre2.lower()
+        if len(genres) == 1:
+            genre1 = genres[0]
+            genre = genre1.lower()
+        else:
+            genre1 = genres[0]
+            genre2 = genres[1]
+            genre = genre1.lower() + genre2.lower()
         #if genre.isin()
         b.append(genre)
     film_recommendation['link'] = a # add the array to the dataframe
@@ -119,4 +127,5 @@ def get_final_recommendation(list_1,list_2,list_3): # combine all recommendation
                 image = image.iloc[0]['image']
                 a.append(image)
     film_recommendation['image'] = a
+    film_recommendation = film_recommendation.drop_duplicates() # drop recommended duplicates of films
     return film_recommendation

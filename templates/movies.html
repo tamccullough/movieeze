@@ -15,7 +15,7 @@
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">{{ movies_table.iloc[i,0] }}</div>
         <a href="{{ movies_table.iloc[i,2] }}" target="_blank">
-        <img src="static/images/house5.jpg" alt="House" style="width:100%">
+        <img src="static/images/{{ movies_table.iloc[i,3] }}" alt="House" style="width:100%">
         </a>
       </div>
     </div>
