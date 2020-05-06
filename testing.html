@@ -17,7 +17,6 @@ Description: Header used at the top of all pages for the site.
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>.righteous{font-family: 'Righteous', cursive;}</style>
 <style>.ramm{font-family: 'Rammetto One', cursive;}</style>
 <style>.logo{font-family: 'Lilita One', cursive;}</style>
@@ -45,7 +44,52 @@ Description: Header used at the top of all pages for the site.
   </div>
 </header>
 
-{% block content %}{% endblock %}
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Genres Section -->
+  <div class="w3-container w3-padding-32">
+    <form method="POST" action="/movies" target="_blank">
+      <input class="w3-input w3-border" type="text" id="Genres" placeholder="Type genre choices in a comma separated list" required name="Genres" name="Genres">
+      <button class="w3-button w3-2019-toffee w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> SUBMIT
+      </button>
+    </form>
+  </div>
+
+  <!-- Movie List Section -->
+  <div class="w3-container" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Recommendations</h3>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[0] }}</div>
+        <img src="static/images/house5.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[10] }}</div>
+        <img src="static/images/house2.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[2] }}</div>
+        <img src="static/images/house3.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[13] }}</div>
+        <img src="static/images/house4.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+  </div>
 
   <!-- About Section -->
   <div class="w3-container w3-padding-32" id="about">

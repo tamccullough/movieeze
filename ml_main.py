@@ -97,9 +97,26 @@ def get_final_recommendation(list_1,list_2,list_3): # combine all recommendation
         genres = genres.split('|')
         genre1 = genres[0]
         genre2 = genres[1]
-        genre = genre1.lower() + genre2.lower() + '.jpg'
+        genre = genre1.lower() + genre2.lower()
+        #if genre.isin()
         b.append(genre)
     film_recommendation['link'] = a # add the array to the dataframe
     film_recommendation['image'] = b
     film_recommendation.pop('movieId')
+    if film_recommendation['image'].isin(genre_image_list['genre']).any():
+        a = []
+        for i in range(0,film_recommendation.shape[0]):
+            image = genre_image_list[genre_image_list['genre'] == film_recommendation.iloc[i]['image'] ]
+            if image.empty:
+                image = film_recommendation.iloc[i]['genres']
+                image = image.split('|')
+                image = image[0]+ '.jpg'
+                image = image.lower()
+                a.append(image)
+            else:
+                image = image.reset_index()
+                image.pop('index')
+                image = image.iloc[0]['image']
+                a.append(image)
+    film_recommendation['image'] = a
     return film_recommendation
