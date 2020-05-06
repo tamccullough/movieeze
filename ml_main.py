@@ -88,10 +88,18 @@ def get_final_recommendation(list_1,list_2,list_3): # combine all recommendation
     film_recommendation = film_recommendation.reset_index()
     film_recommendation.pop('index') # reset and pop the old index
     a = []
+    b = []
     for i in range(0,film_recommendation.shape[0]): # iterate through the dataframe and get the appropriate link for each movie
         link = links[links['movieId'] == film_recommendation.iloc[i]['movieId']]
         link = 'https://www.themoviedb.org/movie/' + str(int(link.iloc[0][2])) # append the link to the array
         a.append(link)
+        genres = film_recommendation.iloc[i]['genres']
+        genres = genres.split('|')
+        genre1 = genres[0]
+        genre2 = genres[1]
+        genre = genre1.lower() + genre2.lower() + '.jpg'
+        b.append(genre)
     film_recommendation['link'] = a # add the array to the dataframe
+    film_recommendation['image'] = b
     film_recommendation.pop('movieId')
     return film_recommendation
