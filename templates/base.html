@@ -1,41 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<!--
-	Author: Todd McCullough
-	Filename: index.html
-	Date: 27 February 2020
-	Description: Header used at the top of all pages for the site.
-	-->
+<!--
+Author: Todd McCullough using w3schools code
+Filename: base.html
+Date: 27 February 2020
+Description: Header used at the top of all pages for the site.
+-->
 <title>MoviEeze</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="./css/gr8css.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
-
 <head>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/gr8css.css') }}">
-<table class="gr8-header" style="width:100%">
-  <tr>
- 	<td class="gr8-header"><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/movi-eeze-logo.png') }}" alt="MoviEeze Logo" height="50px"/></a></td>
-  </tr>
-</table>
-</head>
-<body class="gr8-body">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/css/w3.css">
+</head><body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>M</b>oviEeze</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+    </div>
+  </div>
 </div>
 
-<section>
- {% block content %}{% endblock %}
-</section>
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide w3-padding-32" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="static/images/white.jpg" alt="Architecture" width="1500" height="200">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <br>
+    <br>
+    <br>
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>M</b></span><span class="w3-hide-small w3-text-grey">oviEeze</span></h1>
+  </div>
+</header>
+
+{% block content %}{% endblock %}
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Another Movie Recommender?</h3>
+    <p>Finding the right movie so that you can CHILL on the couch can sometimes be the most frustrating of chores. I hope this helps.
+      I had to do this.
+    </p>
+  </div>
+
+<!-- End page content -->
+</div>
 
 
-<footer class="gr8-footer">
-	<table class="gr8-footer" style="width:100%">
-		<tr>
-			<td align="left"><h4 class="berk">MoviEeze</h4></td>
-			<td align="right"><a href="http://www.durhamcollege.ca" target="_blank"><img src="{{ url_for('static', filename='img/dc_logo-dark.png') }}"alt="DC Logo" width="80px"/></a></td>
-		</tr>
-	</table>
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
-</body>
+
+</body></html>

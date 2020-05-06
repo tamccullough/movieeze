@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form style="height: 750px; background-image: url({{ url_for('static', filename='img/bw-1.jpg') }});
-background-position: center;background-repeat: no-repeat;
-background-size: cover;" class="gr8-center gr8win2 lato" name="Input" method="POST" action="/movies">
-		<br/>
-		<table align="center" class="gr8-center gr8-table" cellpadding="5" class="lato">
-			<tr>
-				<th>title</th>
-				<th>genres</th>
-				<th>link</th>
-			</tr>
-			{%for i in range(0,movies_table.shape[0])%}
-			<tr align="left">
-					{%for r in range(2)%}
-					<td>{{ movies_table.iloc[i,r] }}</td>
-					{%endfor%}
-					<td><a href="{{ movies_table.iloc[i,5] }}" target="_blank">movie link</td></tr>
-			{%endfor%}
-		</table>
-</form>
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">{{ genres }}</h3>
+  </div>
+
+  <div class="w3-row-padding">
+{%for i in range(0,movies_table.shape[0])%}
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ movies_table.iloc[i,0] }}</div>
+        <a href="{{ movies_table.iloc[i,2] }}" target="_blank">
+        <img src="static/images/house5.jpg" alt="House" style="width:100%">
+        </a>
+      </div>
+    </div>
+{%endfor%}
+  </div>
 {% endblock %}
+<!-- {{ url_for('static', filename='img/bw-1.jpg') }} -->

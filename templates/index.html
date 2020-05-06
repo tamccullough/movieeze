@@ -1,21 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form style="height: 750px; background-image: url({{ url_for('static', filename='img/bw-1.jpg') }});
-background-position: center;background-repeat: no-repeat;
-background-size: cover;" class="gr8-center gr8win1 lato" name="Input" method="POST" action="/movies">
-		<br/>
-		<table align="center" cellpadding="5" class="lato">
-			<tr>
-				<td><strong>enter a comma separated list of the following choices;</strong></td></tr>
-			<tr>
-				<tr><td>action,adventure,animation,children,comedy,crime</td></tr>
-				<tr><td>documentary,drama,fantasy,film-noir,horror,musical</td></tr>
-				<tr><td>mystery,romance,sci-fi,thriller,war,western</td></tr>
-				<td><input type="text" id="genres" name="genres" value="" size="50" /></td>
-			</tr>
-		</table>
-				<button type="submit" class="gr8-form gr8-btn-in">search</button>
-</form>
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
 
+  <!-- Genres Section -->
+  <div class="w3-container w3-padding-32">
+    <form method="POST" action="/movies" target="_blank">
+      <input class="w3-input w3-border" type="text" id="Genres" placeholder="Type genre choices in a comma separated list" required name="Genres" name="Genres">
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> SUBMIT
+      </button>
+    </form>
+  </div>
+
+  <!-- Movie List Section -->
+  <div class="w3-container" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Recommendations</h3>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[0] }}</div>
+        <img src="static/images/house5.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[10] }}</div>
+        <img src="static/images/house2.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[2] }}</div>
+        <img src="static/images/house3.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{ genres[13] }}</div>
+        <img src="static/images/house4.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+  </div>
 {% endblock %}
