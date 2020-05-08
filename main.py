@@ -23,7 +23,7 @@ movieeze = Flask(__name__)
 
 @movieeze.route('/index')
 def index():
-    #get the ingredients and search
+    #get the genres and search
     genres_list = ', '.join(genres)
     return render_template('index.html', genres = genres_list)
 
