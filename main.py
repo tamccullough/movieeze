@@ -31,9 +31,9 @@ def index():
 #@login_required
 def movies():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
     genres_list = request.form['Genres']
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
@@ -47,10 +47,10 @@ def movies():
 #@login_required
 def comedy():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'comedy'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Comedy'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -63,10 +63,10 @@ def comedy():
 #@login_required
 def horror():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'horror'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Horror'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -79,10 +79,10 @@ def horror():
 #@login_required
 def drama():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'drama'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Drama'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -95,10 +95,10 @@ def drama():
 #@login_required
 def romance():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'romance'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Romance'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -107,14 +107,14 @@ def romance():
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
     return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
 
-@movieeze.route('/sci-fi')
+@movieeze.route('/scifi')
 #@login_required
 def scifi():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'sci-fi'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Sci-Fi'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -127,10 +127,10 @@ def scifi():
 #@login_required
 def fantasy():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'fantasy'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Fantasy'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -143,10 +143,10 @@ def fantasy():
 #@login_required
 def action():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'fantasy'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Action'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
@@ -159,10 +159,10 @@ def action():
 #@login_required
 def animation():
     #posting the results
-    user_1 = random.choice(users)#123711 # user with a medium amount of ratings
-    user_2 = random.choice(users)#15078 # user with the lowest number of ratings
-    user_3 = random.choice(users)#72315 # user with a lot of ratings
-    genres_list = 'fantasy'
+    user_1 = random.choice(users)
+    user_2 = random.choice(users)
+    user_3 = random.choice(users)
+    genres_list = 'Animation'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)

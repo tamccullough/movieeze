@@ -19,6 +19,8 @@ movies = pd.read_csv('datasets/movies_2010.csv')
 ratings = pd.read_csv('datasets/ratings_2010.csv')
 links = pd.read_csv('datasets/links_2010.csv')
 genre_image_list = pd.read_csv('datasets/genre_image_list.csv')
+genre_image_list = genre_image_list['image'].values
+
 def get_r(user_id):
     # Select which system to use. Due to memory constraints, item based is the only viable option
     recommender_system = ml_model
@@ -61,26 +63,46 @@ def cap_str(item):
     string = item
     return string.capitalize()
 
-def reg_frame(f_list,items):
-    s_ = ''
-    for i in items:
-        j = i.strip()
-        if j == 'sci-fi':
-            j = 'Sci-Fi'
-        if j == 'film-noir':
-            j = 'Film-Noir'
+def reg_frame(f_list,words):
+    regex_q = ''
+    for word in words:
+        word = word.strip()
+        if word == 'sci-fi': # get a Upper version of hypenated words
+            word = 'Sci-Fi'
+            print(word)
+            word = f'(?=.*{word})' # place the word in a regex query
+            regex_q += word
+        elif word == 'film-noir':
+            word = 'Film-Noir'
+            print(word)
+            word = f'(?=.*{word})' # place the word in a regex query
+            regex_q += word
         else:
-            j = cap_str(j)
-        str_ = f'(?=.*{j})'
-        s_ += str_
-    s_
-    f_list = f_list[f_list['genres'].str.contains(fr'^\b{s_}\b',regex=True)]
+            word = cap_str(word) # Uppercase the first letter
+            print(word)
+            word = f'(?=.*{word})' # place the word in a regex query
+            regex_q += word
+    regex_q
+    print(regex_q)
+    f_list = f_list[f_list['genres'].str.contains(fr'^\b{regex_q}\b',regex=True)]
     return f_list
 
 def set_up_ml(user_id,genre_list):
+    words = genre_list.split(',')
+    for word in words:
+        word = str(word)
+        if word == 'Comedy' or word == 'Drama' or word == 'Horror' or word == 'Thriller' or word == 'Documentary':
+            genre = word
+            words.remove(word)
+            words.insert(0, genre)
+        if word == 'comedy' or word == 'drama' or word == 'horror' or word == 'thriller' or word == 'documentary':
+            genre = word
+            words.remove(word)
+            words.insert(0, genre)
+        else:
+            pass
     film_list = get_r(user_id)
-    items = genre_list.split(',')
-    film_list = reg_frame(film_list,items)
+    film_list = reg_frame(film_list,words)
     film_list.pop('date')
     return film_list
 
@@ -99,33 +121,49 @@ def get_final_recommendation(list_1,list_2,list_3): # combine all recommendation
         a.append(link)
         genres = film_recommendation.iloc[i]['genres']
         genres = genres.split('|')
+        for genre in genres: # get the most popular categories and place them first in the list
+            genre = str(genre)
+            if genre == 'Comedy' or genre == 'Drama' or genre == 'Horror' or genre == 'Animation':
+                genre = genre
+                genres.remove(genre)
+                genres.insert(0, genre)
+            else:
+                pass
+        for genre in genres: # Comedy is the most popular, so it always needs to be first
+            genre = str(genre)
+            if genre == 'Comedy':
+                genre = genre
+                genres.remove(genre)
+                genres.insert(0, genre)
+            else:
+                pass
         if len(genres) == 1:
             genre1 = genres[0]
-            genre = genre1.lower()
+            genre = genre1.lower() + '.jpg'
         else:
             genre1 = genres[0]
             genre2 = genres[1]
-            genre = genre1.lower() + genre2.lower()
-        #if genre.isin()
+            genre = genre1.lower() + genre2.lower() + '.jpg'
         b.append(genre)
     film_recommendation['link'] = a # add the array to the dataframe
     film_recommendation['image'] = b
     film_recommendation.pop('movieId')
-    if film_recommendation['image'].isin(genre_image_list['genre']).any():
-        a = []
-        for i in range(0,film_recommendation.shape[0]):
-            image = genre_image_list[genre_image_list['genre'] == film_recommendation.iloc[i]['image'] ]
-            if image.empty:
-                image = film_recommendation.iloc[i]['genres']
-                image = image.split('|')
-                image = image[0]+ '.jpg'
-                image = image.lower()
-                a.append(image)
-            else:
-                image = image.reset_index()
-                image.pop('index')
-                image = image.iloc[0]['image']
-                a.append(image)
-    film_recommendation['image'] = a
     film_recommendation = film_recommendation.drop_duplicates() # drop recommended duplicates of films
+    film_recommendation = film_recommendation.reset_index()
+    film_recommendation.pop('index')
+    for i in range(0,film_recommendation.shape[0]):
+        image = film_recommendation.iloc[i]['image']
+        if image in genre_image_list:
+            pass
+        else:
+            genres = film_recommendation.iloc[i]['genres']
+            genres = genres.split('|')
+            for genre in genres: # get the most popular categories and place them first in the list
+                genre = str(genre)
+                if genre == 'Comedy' or genre == 'Drama' or genre == 'Horror' or genre == 'Animation' or genre == 'Action' or genre == 'Romance':
+                    genre = genre + '.jpg'
+                    film_recommendation.at[i,'image'] = genre.lower()
+                    break
+                else:
+                    pass
     return film_recommendation
