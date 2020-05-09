@@ -69,17 +69,14 @@ def reg_frame(f_list,words):
         word = word.strip()
         if word == 'sci-fi': # get a Upper version of hypenated words
             word = 'Sci-Fi'
-            print(word)
             word = f'(?=.*{word})' # place the word in a regex query
             regex_q += word
         elif word == 'film-noir':
             word = 'Film-Noir'
-            print(word)
             word = f'(?=.*{word})' # place the word in a regex query
             regex_q += word
         else:
             word = cap_str(word) # Uppercase the first letter
-            print(word)
             word = f'(?=.*{word})' # place the word in a regex query
             regex_q += word
     regex_q
@@ -90,7 +87,6 @@ def reg_frame(f_list,words):
 def set_up_ml(user_id,genre_list):
     words = genre_list.split(',')
     for word in words:
-        word = str(word)
         if word == 'Comedy' or word == 'Drama' or word == 'Horror' or word == 'Thriller' or word == 'Documentary':
             genre = word
             words.remove(word)
@@ -160,7 +156,7 @@ def get_final_recommendation(list_1,list_2,list_3): # combine all recommendation
             genres = genres.split('|')
             for genre in genres: # get the most popular categories and place them first in the list
                 genre = str(genre)
-                if genre == 'Comedy' or genre == 'Drama' or genre == 'Horror' or genre == 'Animation' or genre == 'Action' or genre == 'Romance':
+                if genre == 'Comedy' or genre == 'Drama' or genre == 'Horror' or genre == 'Animation' or genre == 'Action' or genre == 'Romance' or genre == 'Documentary' or genre == 'Sci-Fi':
                     genre = genre + '.jpg'
                     film_recommendation.at[i,'image'] = genre.lower()
                     break

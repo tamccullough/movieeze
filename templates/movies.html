@@ -11,13 +11,14 @@
 
   <div class="w3-row-padding">
 {%for i in range(0,movies_table.shape[0])%}
-    <div class="w3-col l3 m6 w3-margin-bottom">
+    <div class="w3-quarter w3-card">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">{{ movies_table.iloc[i,0] }}</div>
         <a href="{{ movies_table.iloc[i,2] }}" target="_blank">
         <img src="static/images/{{ movies_table.iloc[i,3] }}" alt="House" style="width:100%">
         </a>
       </div>
+      <br>
     </div>
 {%endfor%}
   </div>

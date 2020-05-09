@@ -9,8 +9,8 @@ import numpy as np
 import pandas as pd
 import random
 
-ratings = pd.read_csv('datasets/ratings_2010.csv')
-users = ratings.userId.unique()
+users = pd.read_csv('datasets/users.csv')
+users = users.users.values
 
 genres = ['Action','Adventure','Animation',
           'Children','Comedy','Crime',
@@ -24,8 +24,8 @@ movieeze = Flask(__name__)
 @movieeze.route('/index')
 def index():
     #get the genres and search
-    genres_list = ', '.join(genres)
-    return render_template('index.html', genres = genres_list)
+    genres_choices = ', '.join(genres)
+    return render_template('index.html', genres = genres_choices)
 
 @movieeze.route('/movies', methods=['POST'])
 #@login_required
@@ -110,11 +110,10 @@ def romance():
 @movieeze.route('/scifi')
 #@login_required
 def scifi():
-    #posting the results
     user_1 = random.choice(users)
     user_2 = random.choice(users)
     user_3 = random.choice(users)
-    genres_list = 'Sci-Fi'
+    genres_list = 'sci-fi'
 
     recommended_list_1 = ml_main.set_up_ml(user_1,genres_list) # generate a list of recommendations for each user
     recommended_list_2 = ml_main.set_up_ml(user_2,genres_list)
