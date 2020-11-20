@@ -2,25 +2,37 @@
 {% block content %}
 
 <!-- Page content -->
-<div class="w3-content w3-padding" style="max-width:1564px">
+<div class="container {{ theme }}">
+  <div class="page80">
 
-  <!-- Project Section -->
-  <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">{{ genres }}</h3>
-  </div>
-
-  <div class="w3-row-padding">
-{%for i in range(0,movies_table.shape[0])%}
-    <div class="w3-quarter w3-card">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">{{ movies_table.iloc[i,0] }}</div>
+    <!-- Project Section -->
+    <div>
+      <h1>{{ genres }}</h1>
+    </div>
+    <h2>Top Recommendations</h2>
+    <!-- best recommendations -->
+    <div class="parent">
+      {%for i in range(0,2)%}
+      <div class="box">
+        <span>{{ movies_table.iloc[i,0] }}</span>
         <a href="{{ movies_table.iloc[i,2] }}" target="_blank">
-        <img src="static/images/{{ movies_table.iloc[i,3] }}" alt="House" style="width:100%">
+          <img src="static/images/{{ movies_table.iloc[i,3] }}" alt="House" style="width:100%">
         </a>
       </div>
-      <br>
+    {%endfor%}
     </div>
-{%endfor%}
+    <!-- the rest-->
+      <div class="parent">
+        {%for i in range(2,movies_table.shape[0])%}
+        <div class="box">
+          <span>{{ movies_table.iloc[i,0] }}</span>
+          <a href="{{ movies_table.iloc[i,2] }}" target="_blank">
+            <img src="static/images/{{ movies_table.iloc[i,3] }}" alt="House" style="width:100%">
+          </a>
+        </div>
+      {%endfor%}
+      </div>
+
   </div>
-{% endblock %}
-<!-- {{ url_for('static', filename='img/bw-1.jpg') }} -->
+  {% endblock %}
+  <!-- {{ url_for('static', filename='img/bw-1.jpg') }} -->

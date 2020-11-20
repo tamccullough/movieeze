@@ -2,78 +2,72 @@
 {% block content %}
 
 <!-- Page content -->
-<div class="w3-content w3-padding" style="max-width:1564px">
+<div class="container {{ theme }}">
+  <div class="page80">
 
-  <!-- Genres Section -->
-  <div class="w3-container w3-padding-32">
-    <form method="POST" action="/movies">
-      <p>{{ genres[0:] }}</p>
-      <input class="w3-input w3-border" type="text" id="Genres" placeholder="Type your choices from above in a comma separated list" required name="Genres" name="Genres">
-      <button class="w3-button w3-2019-toffee w3-section" type="submit">
-        <i class="fa fa-paper-plane"></i> SUBMIT
-      </button>
-    </form>
-  </div>
+    <!-- Genres Section -->
+      <div>
+        <form class="center" method="post" action="/movies" style="width: 80%">
+          <div class="parent">
+            <div class="form box">
+              <input class="{{ theme }}-colour inputbox" type="text" id="Genres" name="Genres" autocomplete="off" required />
+              <label for="Genres" class="label-name">
+                <span class="content-name">Type your choices from above in a comma separated list</span>
+              </label>
+              </div>
+            <div class="box">
+              <input class="{{ theme }}-action button" style="width: 80%;dislay: inline;" type="submit" formaction="/movies" value="submit"/>
+            </div>
+          </div>
+          <div class="spacer"></div>
+        </form>
+      </div>
+
+      <!-- Movie List Section -->
+      <h3 >Recommendations</h3>
+      <div class="parent">
+
+        <div class="box">
+          <span>Comedy</span>
+          <a href="{{ url_for('comedy') }}"><img src="static/images/comedy.jpg" alt="House" style="width:100%"></a>
+        </div>
+
+          <div class="box">
+            <span>Horror</span>
+            <a href="{{ url_for('horror') }}"><img src="static/images/horror.jpg" alt="House" style="width:100%"></a>
+          </div>
+
+          <div class="box">
+            <span>Drama</span>
+            <a href="{{ url_for('drama') }}"><img src="static/images/drama.jpg" alt="House" style="width:100%"></a>
+          </div>
+
+          <div class="box">
+            <span>Romance</span>
+            <a href="{{ url_for('romance') }}"><img src="static/images/romance.jpg" alt="House" style="width:100%"></a>
+          </div>
 
 
-  <!-- Movie List Section -->
-  <div class="w3-container" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Recommendations</h3>
-  </div>
+          <div class="box">
+            <span>Sci-Fi</span>
+            <a href="{{ url_for('scifi') }}"><img src="static/images/sci-fi.jpg" alt="House" style="width:100%"></a>
+          </div>
 
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding"> Comedy</div>
-        <a href="{{ url_for('comedy') }}"><img src="static/images/comedy.jpg" alt="House" style="width:100%"></a>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding"> Horror</div>
-        <a href="{{ url_for('horror') }}"><img src="static/images/horror.jpg" alt="House" style="width:100%"></a>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding"> Drama</div>
-        <a href="{{ url_for('drama') }}"><img src="static/images/drama.jpg" alt="House" style="width:100%"></a>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding"> Romance</div>
-        <a href="{{ url_for('romance') }}"><img src="static/images/romance.jpg" alt="House" style="width:100%"></a>
-      </div>
-    </div>
-  </div>
+          <div class="box">
+            <span>Fantasy</span>
+            <a href="{{ url_for('fantasy') }}"><img src="static/images/fantasy.jpg" alt="House" style="width:100%"></a>
+          </div>
 
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding"> Sci-Fi</div>
-        <a href="{{ url_for('scifi') }}"><img src="static/images/sci-fi.jpg" alt="House" style="width:100%"></a>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding"> Fantasy</div>
-        <a href="{{ url_for('fantasy') }}"><img src="static/images/fantasy.jpg" alt="House" style="width:100%"></a>
-      </div>
-    </div>
-  <div class="w3-col l3 m6 w3-margin-bottom">
-    <div class="w3-display-container">
-      <div class="w3-display-topleft w3-black w3-padding"> Action</div>
-      <a href="{{ url_for('action') }}"><img src="static/images/action.jpg" alt="House" style="width:100%"></a>
-    </div>
-  </div>
-  <div class="w3-col l3 m6 w3-margin-bottom">
-    <div class="w3-display-container">
-      <div class="w3-display-topleft w3-black w3-padding"> Animation</div>
-      <a href="{{ url_for('animation') }}"><img src="static/images/animation.jpg" alt="House" style="width:100%"></a>
-    </div>
-  </div>
+          <div class="box">
+            <span>Action</span>
+            <a href="{{ url_for('action') }}"><img src="static/images/action.jpg" alt="House" style="width:100%"></a>
+          </div>
+
+          <div class="box">
+            <span>Animation</span>
+            <a href="{{ url_for('animation') }}"><img src="static/images/animation.jpg" alt="House" style="width:100%"></a>
+          </div>
 </div>
 
-  </div>
-{% endblock %}
+
+      {% endblock %}

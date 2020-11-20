@@ -21,11 +21,15 @@ genres = ['Action','Adventure','Animation',
 
 movieeze = Flask(__name__)
 
-@movieeze.route('/index')
+theme, tfont, bfont = 'dark', ['Pacifico','cursive'],  ['Roboto','sans-serif']
+
+@movieeze.route('/')
 def index():
     #get the genres and search
     genres_choices = ', '.join(genres)
-    return render_template('index.html', genres = genres_choices)
+
+    return render_template('index.html', genres = genres_choices,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/movies', methods=['POST'])
 #@login_required
@@ -41,7 +45,8 @@ def movies():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/comedy')
 #@login_required
@@ -57,7 +62,8 @@ def comedy():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/horror')
 #@login_required
@@ -73,7 +79,8 @@ def horror():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/drama')
 #@login_required
@@ -89,7 +96,8 @@ def drama():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/romance')
 #@login_required
@@ -105,7 +113,8 @@ def romance():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/scifi')
 #@login_required
@@ -120,7 +129,8 @@ def scifi():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/fantasy')
 #@login_required
@@ -136,7 +146,8 @@ def fantasy():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/action')
 #@login_required
@@ -152,7 +163,8 @@ def action():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 @movieeze.route('/animation')
 #@login_required
@@ -168,7 +180,8 @@ def animation():
     recommended_list_3 = ml_main.set_up_ml(user_3,genres_list)
 
     final_recommendation = ml_main.get_final_recommendation(recommended_list_1,recommended_list_2,recommended_list_3)
-    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list)
+    return render_template('movies.html',movies_table = final_recommendation,genres = genres_list,
+    theme = theme,  tfont = tfont, bfont = bfont)
 
 if __name__ == "__main__":
     movieeze.run()
